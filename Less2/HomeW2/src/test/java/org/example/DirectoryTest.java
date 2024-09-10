@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DirectoryTest {
@@ -21,13 +22,13 @@ public class DirectoryTest {
 
     @Test
     public void testDirectoryCreation() {
-    assertEquals("TestDirectory", directory.getName());
+        assertEquals("TestDirectory", directory.getName());
     }
 
     @Test
     public void testAddAndRemoveComponent() {
         directory.remove(file1);
-        assertEquals(1, directory.getChild(0));
+        assertEquals(file2, directory.getChild(0));
     }
 
     @Test
@@ -39,6 +40,5 @@ public class DirectoryTest {
     @Test
     public void testShowDetails() {
         directory.showDetails();
-
     }
 }
