@@ -1,15 +1,12 @@
-package example;
+package org.example;
 
+
+import com.github.tomakehurst.wiremock.WireMockServer;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import io.qameta.allure.Step;
-import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -17,11 +14,16 @@ import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo; // Импорт метода equalTo
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo; // Импорт метода urlPathEqualTo
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse; // Импорт метода aResponse
 import java.io.IOException;
 import java.util.List;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+import static io.restassured.RestAssured.given;
+
+
 public class WeatherCitySearchTest {
 
     private static WireMockServer wireMockServer;

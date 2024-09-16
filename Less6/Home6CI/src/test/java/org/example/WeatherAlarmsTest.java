@@ -1,13 +1,10 @@
-package example;
+package org.example;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import io.qameta.allure.Step;
-import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -15,8 +12,9 @@ import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
+
 public class WeatherAlarmsTest {
     private static final String LOCATION_KEY = "295382";
     private static final String API_KEY = "EtP3EK12I0Bd6HlAA0xyHqKAG5PkX8GC";
@@ -53,12 +51,12 @@ public class WeatherAlarmsTest {
                 .willReturn(aResponse()
                         .withStatus(200)
                         .withHeader("Content-Type", "application/json")
-                        .withBodyFile("weather-alarms-10days.json"))); // Use a static JSON file for the response
+                        .withBodyFile("weather-alarms-10days.json")));
     }
 
     @Test
     @Step("Checking that request is successful")
-    public voidrequestIsSuccessful() {
+    public void requestIsSuccessful() {
         logger.info("Running test: requestIsSuccessful");
         given()
                 .when()
