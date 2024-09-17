@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- JDBC Settings -->
+        <property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+        <property name="hibernate.connection.url">jdbc:sqlite:demo.db</property>
+
+        <!-- SQLite Dialect for Hibernate -->
+        <property name="hibernate.dialect">com.zsoltfabok.hibernate.dialect.SQLiteDialect</property>
+
+        <!-- Hibernate Specific Settings -->
+        <property name="hibernate.hbm2ddl.auto">validate</property> <!-- изменен на validate -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Mappings for Entity Classes -->
+        <mapping class="org.example.seminar.ClientEntity"/>
+        <mapping class="org.example.seminar.CreditEntity"/>
+        <mapping class="org.example.seminar.CurrentEntity"/>
+        <mapping class="org.example.seminar.DebitEntity"/>
+        <mapping class="org.example.seminar.EmployeeEntity"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>
